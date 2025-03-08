@@ -74,60 +74,114 @@ Exam Wizard is a Django-based web application designed to manage exams for stude
 
 ``
 exam_wizard/
+
 │
+
 ├── exam_wizard/
+
 │   ├── __init__.py
+
 │   ├── settings.py
+
 │   ├── urls.py
+
 │   ├── views.py
+
 │   └── wsgi.py
+
 │
+
 ├── students/
+
 │   ├── __init__.py
+
 │   ├── admin.py
+
 │   ├── apps.py
+
 │   ├── models.py
+
 │   ├── urls.py
+
 │   ├── views.py
+
 │   └── templates/
+
 │       └── students/
+
 │           └── dashboard.html
+
 │
 ├── teachers/
+
 │   ├── __init__.py
+
 │   ├── admin.py
+
 │   ├── apps.py
+
 │   ├── models.py
+
 │   ├── urls.py
+
 │   ├── views.py
+
 │   └── templates/
+
 │       └── teachers/
+
 │           └── dashboard.html
+
 │
+
 ├── admins/
+
 │   ├── __init__.py
+
 │   ├── admin.py
+
 │   ├── apps.py
+
 │   ├── models.py
+
 │   ├── urls.py
+
 │   ├── views.py
+
 │   └── templates/
+
 │       └── admins/
+
 │           └── dashboard.html
+
 │
+
 ├── templates/
+
 │   ├── base_landing.html
+
 │   ├── base_sidebar.html
+
 │   ├── landing.html
+
 │   └── registration/
+
 │       ├── login.html
+
 │       └── register.html
+
 │
+
 ├── static/
+
 │   └── css/
+
 │       └── styles.css
+
 │
+
 └── manage.py
+
 ```
 
 ## Contributing
