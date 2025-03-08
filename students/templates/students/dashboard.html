@@ -1,0 +1,58 @@
+{% extends "base_sidebar.html" %}
+
+{% block content %}
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="query-container">
+            <h2>Student Dashboard</h2>
+
+            <div class="form-group">
+                <label>Qualification</label>
+                <select>
+                    <option>IAL GCSE</option>
+                    <option>A-Level</option>
+                    <option>O-Level</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Unit</label>
+                <select>
+                    <option>Unit 1</option>
+                    <option>Unit 2</option>
+                    <option>Unit 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Topics and Subtopics</label>
+                <button class="btn btn-outline-secondary">Select Topics</button>
+            </div>
+
+            <div class="form-group">
+                <label>Question Type</label>
+                <select>
+                    <option>Multiple Choice</option>
+                    <option>Short Answer</option>
+                    <option>Long Answer</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Select Theme</label>
+                <select>
+                    <option>Superhero</option>
+                    <option>Classic</option>
+                    <option>Minimalist</option>
+                </select>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-blue">Search Questions</button>
+                <button class="btn btn-green">Generate PDF</button>
+                <button class="btn btn-red">Clear Fields</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

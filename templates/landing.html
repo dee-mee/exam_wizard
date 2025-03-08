@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Wizard | Your Ultimate Exam Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand text-white" href="#">Exam Wizard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Sponsors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page Content -->
+<div class="landing-page" style="background: url('{% static 'images/bg.png' %}') no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+        <h1>Welcome to Exam Wizard</h1>
+        <p>Your ultimate platform for managing exams efficiently and effortlessly.</p>
+        <div>
+            <a href="{% url 'login' %}" class="btn btn-custom btn-login">Get Started</a>
+            <a href="{% url 'register' %}" class="btn btn-custom btn-register">Sign Up</a>
+        </div>
+    </div>
+
+
+
+        <!-- About Section -->
+    <div class="about-section">
+        <h2>About Exam Wizard</h2>
+        <p>Exam Wizard is an advanced exam management system that allows institutions and students to efficiently organize, schedule, and participate in examinations.</p>
+    </div>
+
+<!-- Features Section -->
+<div class="features-section">
+    <h2>Key Features</h2>
+    <div class="features-container">
+        <div class="feature-box">✅ Automated Exam Scheduling</div>
+        <div class="feature-box">✅ Real-Time Grading System</div>
+        <div class="feature-box">✅ Secure Student Authentication</div>
+        <div class="feature-box">✅ Detailed Exam Analytics</div>
+        <div class="feature-box">✅ Question Bank Management</div>
+        <div class="feature-box">✅ Student Performance Tracking</div>
+    </div>
+</div>
+
+
+
+        <!-- Sponsors Section -->
+    <div class="sponsors-section">
+        <h2>Our Sponsors</h2>
+        <div class="sponsors-logos">
+            <img src="{% static 'images/sponsor1.webp' %}" alt="Sponsor 2">
+            <img src="{% static 'images/sponsor1.webp' %}" alt="Sponsor 1">
+            <img src="{% static 'images/sponsor1.webp' %}" alt="Sponsor 3">
+        </div>
+    </div>
+
+
+<div class="testimonials">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-container">
+        <div class="testimonial">"Great platform! Highly recommend!" - Alice</div>
+        <div class="testimonial">"Made studying easier!" - Bob</div>
+        <div class="testimonial">"Excellent system!" - Charlie</div>
+        <div class="testimonial">"Excellent system!" - Charlie</div>
+        <div class="testimonial">"Excellent system!" - Charlie</div>
+        <div class="testimonial">"Excellent system!" - Charlie</div>
+        <div class="testimonial">"Excellent system!" - Charlie</div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+    gsap.to(".testimonial-container", {
+        x: "-100%",
+        duration: 10,
+        repeat: -1,
+        ease: "linear"
+    });
+</script>
+
+
+
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Exam Wizard. All rights reserved.</p>
+    </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+
+
+gsap.from(".landing-page h1", { duration: 1, opacity: 0, y: -50 });
+gsap.from(".landing-page p", { duration: 1.5, opacity: 0, y: 30, delay: 0.5 });
+gsap.from(".about-section h2, .about-content", { duration: 1, opacity: 0, delay: 0.8, stagger: 0.3 });
+gsap.from(".feature-box", {
+    duration: 1,
+    opacity: 0,
+    scale: 0.8,
+    stagger: 0.2,
+    ease: "back.out(1.7)",
+    delay: 0.5
+});
+    </script>
+</body>
+</html>

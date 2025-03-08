@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#" class="active">Dashboard</a>
+        <a href="#">Students Management</a>
+        <a href="#">Supervisors</a>
+        <a href="#">Projects</a>
+        <a href="#">Timing</a>
+        <a href="#">System Configuration</a>
+        <a href="#">Notices</a>
+        <a href="#">Change Password</a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="logo">Jaramogi Oginga Odinga University Of Science and Technology</div>
+            <div class="logout">Logout</div>
+        </div>
+        <div class="table-container">
+            <h2>Student Register</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+    </tr>
+    {% for admin in admins %}
+    <tr>
+        <td>{{ admin.name }}</td>
+        <td>{{ admin.email }}</td>
+        <td>{{ admin.phone_number }}</td>
+    </tr>
+    {% endfor %}
+</table>
+            <div class="pagination">
+                <a href="#">&laquo; Previous</a>
+                <a href="#" class="active">1</a>
+                <a href="#">Next &raquo;</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
