@@ -1,0 +1,8 @@
+<h1>{{ course.name }}</h1>
+<p>{{ course.description }}</p>
+<h2>Topics</h2>
+<ul>
+    {% for topic in course.topic_set.all %}
+        <li>{{ topic.title }}</li>
+    {% endfor %}
+</ul>

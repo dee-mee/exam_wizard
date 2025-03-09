@@ -1,0 +1,33 @@
+{% extends "base_sidebar.html" %}
+{% load static %}  {# Load static files at the top #}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg p-4">
+                <div class="text-center">
+                    <h2 class="mb-3">My Profile</h2>
+                    {% if user_profile.profile_picture %}
+                        <img src="{{ user_profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle img-thumbnail mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    {% else %}
+                        <img src="{% static 'images/default-profile.png' %}" alt="Default Profile" class="rounded-circle img-thumbnail mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    {% endif %}
+                </div>
+
+                <div class="card-body">
+                    <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
+                    <p><strong>Full Name:</strong> {{ user_profile.full_name }}</p>
+                    <p><strong>Email:</strong> {{ user_profile.email }}</p>
+                </div>
+
+                <div class="text-center mb-3">
+                    <a href="{% url 'edit_profile' %}" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

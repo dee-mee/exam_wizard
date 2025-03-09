@@ -5,3 +5,4 @@ class Teacher(models.Model):
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15)
     subjects = models.CharField(max_length=100)
+

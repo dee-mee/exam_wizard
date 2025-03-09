@@ -1,12 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
-from students.models import UserProfile
-from django import forms
-from django.contrib.auth.models import User
-from students.models import UserProfile
-from django import forms
-from django.contrib.auth.models import User
+from .models import UserProfile, Course, Topic, Question
 
 
 class RegisterForm(forms.ModelForm):
@@ -24,13 +18,6 @@ class RegisterForm(forms.ModelForm):
             UserProfile.objects.create(user=user, role='student')  # Default role is 'student'
         return user
 
-
-
-class LoginForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-
-
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
@@ -40,3 +27,23 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email']
+
+
+# students/forms.py
+
+
+class CourseForm(forms.ModelForm):
+    class Meta:
+        model = Course
+        fields = ['name', 'description', 'pdf_file', 'image']
+
+class TopicForm(forms.ModelForm):
+    class Meta:
+        model = Topic
+        fields = ['title', 'pdf_file', 'image']
+
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ['question_text', 'answer']
+

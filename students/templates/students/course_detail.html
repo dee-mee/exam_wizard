@@ -1,0 +1,9 @@
+<h2>{{ course.name }}</h2>
+<p>{{ course.description }}</p>
+<h3>Topics</h3>
+<ul>
+    {% for topic in course.topic_set.all %}
+        <li>{{ topic.title }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_topic' course.id %}">Add Topic</a>
