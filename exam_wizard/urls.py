@@ -29,7 +29,7 @@ urlpatterns = [
     path('', views.landing_page, name='landing'),
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
-    path('logout/', views.user_logout, name='logout'),
+    path('logout/', views.custom_logout, name='logout'),
     path('students/', include('students.urls')),
     path('teachers/', include('teachers.urls')),
     path('admins/', include('admins.urls')),

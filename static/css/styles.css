@@ -26,16 +26,19 @@
             font-weight: bold;
         }
         /* Sidebar */
-        .sidebar {
-            width: 250px;
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            height: 100vh;
-            position: fixed;
-            top: 56px; /* Adjust based on navbar height */
-            left: 0;
-        }
+/* Ensure sidebar does not overlap content */
+.sidebar {
+    width: 250px; /* Adjust width */
+    position: fixed; /* Keep it fixed on the side */
+    height: 100vh; /* Full height */
+    background-color: #2C3E50; /* Sidebar color */
+    padding-top: 20px;
+}
+
+.content {
+    margin-left: 260px; /* Push content to the right */
+    padding: 20px;
+}
 
         .sidebar ul {
             list-style-type: none;

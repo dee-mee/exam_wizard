@@ -1,11 +1,39 @@
 {% extends "base_sidebar.html" %}
+{% load static %}
+
 
 {% block content %}
-<h2>Edit Profile</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
-    <button type="submit">Save</button>
-</form>
+<div class="content">
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="username" class="form-label"><strong>Username:</strong></label>
+            {{ user_form.username }}
+        </div>
+
+        <div class="mb-3">
+            <label for="full_name" class="form-label"><strong>Full Name:</strong></label>
+            {{ profile_form.full_name }}
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label"><strong>Email:</strong></label>
+            {{ user_form.email }}
+        </div>
+
+        <div class="mb-3">
+            <label for="profile_picture" class="form-label"><strong>Profile Picture:</strong></label>
+            {{ profile_form.profile_picture }}
+            {% if profile_form.instance.profile_picture %}
+                <div class="mt-2">
+                    <img src="{{ profile_form.instance.profile_picture.url }}" alt="Profile Picture" class="img-thumbnail" style="max-width: 150px;">
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+    </form>
+</div>
+
 {% endblock %}

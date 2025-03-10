@@ -38,9 +38,9 @@ def user_login(request):
 
 
 @login_required
-def user_logout(request):
+def custom_logout(request):
     logout(request)
-    return redirect('landing')  # Redirect to the landing page or login page
+    return render(request, 'registration/logout.html')# Redirect to the landing page or login page
 
 
 def landing_page(request):
