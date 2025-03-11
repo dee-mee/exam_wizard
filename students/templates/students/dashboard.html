@@ -2,57 +2,72 @@
 
 {% block content %}
 
-    <!-- Main Content -->
-    <div class="content">
-        <div class="query-container">
-            <h2>Student Dashboard</h2>
+<!-- Main Content -->
+<div class="content">
+    <div class="query-container">
+        <h2>Student Dashboard</h2>
 
+        <form method="get" action="{% url 'search_questions' %}">
             <div class="form-group">
                 <label>Qualification</label>
-                <select>
-                    <option>IAL GCSE</option>
-                    <option>A-Level</option>
-                    <option>O-Level</option>
+                <select name="qualification">
+                    <option value="IAL GCSE">IAL GCSE</option>
+                    <option value="A-Level">A-Level</option>
+                    <option value="O-Level">O-Level</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Unit</label>
-                <select>
-                    <option>Unit 1</option>
-                    <option>Unit 2</option>
-                    <option>Unit 3</option>
+                <select name="unit">
+                    <option value="Unit 1">Unit 1</option>
+                    <option value="Unit 2">Unit 2</option>
+                    <option value="Unit 3">Unit 3</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Topics and Subtopics</label>
-                <button class="btn btn-outline-secondary">Select Topics</button>
+                <button type="button" class="btn btn-outline-secondary" onclick="openTopicSelector()">Select Topics</button>
             </div>
 
             <div class="form-group">
                 <label>Question Type</label>
-                <select>
-                    <option>Multiple Choice</option>
-                    <option>Short Answer</option>
-                    <option>Long Answer</option>
+                <select name="question_type">
+                    <option value="Multiple Choice">Multiple Choice</option>
+                    <option value="Short Answer">Short Answer</option>
+                    <option value="Long Answer">Long Answer</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label>Select Theme</label>
-                <select>
-                    <option>Superhero</option>
-                    <option>Classic</option>
-                    <option>Minimalist</option>
+                <select name="theme">
+                    <option value="Superhero">Superhero</option>
+                    <option value="Classic">Classic</option>
+                    <option value="Minimalist">Minimalist</option>
                 </select>
             </div>
 
             <div class="btn-container">
-                <button class="btn btn-blue">Search Questions</button>
-                <button class="btn btn-green">Generate PDF</button>
-                <button class="btn btn-red">Clear Fields</button>
+                <button type="submit" class="btn btn-blue">Search Questions</button>
+                <button type="button" class="btn btn-green" onclick="generatePDF()">Generate PDF</button>
+                <button type="reset" class="btn btn-red">Clear Fields</button>
             </div>
-        </div>
+        </form>
     </div>
+</div>
+
+<script>
+    function openTopicSelector() {
+        // Logic to open a modal or dropdown for selecting topics
+        alert('Open topic selector functionality here.');
+    }
+
+    function generatePDF() {
+        // Logic to trigger PDF generation
+        window.location.href = "{% url 'generate_pdf' %}";
+    }
+</script>
+
 {% endblock %}

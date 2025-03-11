@@ -1,52 +1,96 @@
-{% extends "base.html" %}
-
 {% block content %}
+{% load static %}
+
 <h2>Admin Dashboard</h2>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Dashboard</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <div class="sidebar">
-        <a href="#" class="active">Dashboard</a>
-        <a href="#">Students Management</a>
-        <a href="#">Supervisors</a>
-        <a href="#">Projects</a>
-        <a href="#">Timing</a>
-        <a href="#">System Configuration</a>
-        <a href="#">Notices</a>
-        <a href="#">Change Password</a>
-    </div>
 
-    <div class="main-content">
-        <div class="header">
-            <div class="logo">Jaramogi Oginga Odinga University Of Science and Technology</div>
-            <div class="logout">Logout</div>
-        </div>
-        <div class="table-container">
-            <h2>Student Register</h2>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone Number</th>
-    </tr>
-    {% for admin in admins %}
-    <tr>
-        <td>{{ admin.name }}</td>
-        <td>{{ admin.email }}</td>
-        <td>{{ admin.phone_number }}</td>
-    </tr>
-    {% endfor %}
-</table>
-            <div class="pagination">
-                <a href="#">&laquo; Previous</a>
-                <a href="#" class="active">1</a>
-                <a href="#">Next &raquo;</a>
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <nav class="col-md-3 col-lg-2 d-md-block bg-dark sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Students Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Supervisors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Timing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">System Configuration</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Notices</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Change Password</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </div>
+        </nav>
 
+        <!-- Main Content -->
+        <div class="content">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <h2>Admin List</h2>
+                <form method="GET" class="d-flex">
+                    <input type="text" name="search" value="{{ search_query }}" placeholder="Search admins..." class="form-control me-2">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+                <a href="{% url 'export_admins_csv' %}" class="btn btn-success">Export CSV</a>
+            </div>
+
+            <div class="table-responsive mt-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><a href="?sort=name&order={{ order }}">Name</a></th>
+                            <th><a href="?sort=email&order={{ order }}">Email</a></th>
+                            <th><a href="?sort=phone_number&order={{ order }}">Phone Number</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for admin in admins %}
+                        <tr>
+                            <td>{{ admin.name }}</td>
+                            <td>{{ admin.email }}</td>
+                            <td>{{ admin.phone_number }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No admins found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    {% if admins.has_previous %}
+                        <li class="page-item"><a class="page-link" href="?page={{ admins.previous_page_number }}">&laquo; Previous</a></li>
+                    {% endif %}
+                    <li class="page-item active"><span class="page-link">{{ admins.number }}</span></li>
+                    {% if admins.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ admins.next_page_number }}">Next &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </main>
+    </div>
+</div>
+</div>
 {% endblock %}

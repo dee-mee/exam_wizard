@@ -1,9 +1,41 @@
-<h2>{{ course.name }}</h2>
-<p>{{ course.description }}</p>
-<h3>Topics</h3>
-<ul>
-    {% for topic in course.topic_set.all %}
-        <li>{{ topic.title }}</li>
-    {% endfor %}
-</ul>
-<a href="{% url 'add_topic' course.id %}">Add Topic</a>
+{% extends "base_sidebar.html" %}
+
+{% block content %}
+<div class="content">
+    <div class="container mt-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h2 class="card-title text-primary">{{ course.name }}</h2>
+                <p class="card-text">{{ course.description }}</p>
+
+                <h3 class="mt-4">📌 Topics</h3>
+                {% if topics %}
+                    <ul class="list-group">
+                        {% for topic in topics %}
+                            <li class="list-group-item">{{ topic.title }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">No topics added yet.</p>
+                {% endif %}
+
+                <h3 class="mt-4">📝 Questions</h3>
+                {% if questions %}
+                    <ul class="list-group">
+                        {% for question in questions %}
+                            <li class="list-group-item">
+                                <strong>Q:</strong> {{ question.question_text }}
+                                <br>
+                                <strong>A:</strong> {{ question.answer }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">No questions added yet.</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
